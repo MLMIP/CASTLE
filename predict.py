@@ -6,7 +6,7 @@ from numpy import mean
 
 from generate_predict_fea import generate_predict_input
 from get_predict_pdb import get_predict_pdb_info
-from model import Model_Net
+from SMILE.Model.model import Model_Net
 import Dataset_predict as dataset
 from torch.utils.data import DataLoader
 
