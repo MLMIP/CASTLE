@@ -18,7 +18,7 @@ from sklearn.model_selection import StratifiedKFold, StratifiedShuffleSplit
 from torch import nn
 from torch.nn import BCELoss
 from torch.utils.data import DataLoader
-from model import Model_Net
+from SMILE.Model.model import Model_Net
 import Dataset as dataset
 import openpyxl as op
 
