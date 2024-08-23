@@ -3,7 +3,7 @@
 ## SMILE: Identifying disease-associated mutations at metal-binding sites with deep graph panoramic attention-weaving learning
 ***
 
-SMILE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of SMILE¡¯s effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
+SMILE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of SMILE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
 
 ## Step 1: Clone the GitHub repository
 
