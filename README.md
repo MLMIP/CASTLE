@@ -48,4 +48,4 @@ Where the input file is a given file, with each line representing a specific mut
 `PDB Metal FromAA ToAA pdbpos`, such as `1s1c MG F L 39`.
 
 ## other
-We provide all curated samples of metal binding site mutations, the code for generating sample features, and the prediction scores of all methods on the test set. To train your own data, please generate sample features and then use files such as fivefold_crossvalid_ZnCaMg_plus.py
+We provide all curated samples of metal binding site mutations, the code for generating sample features, and the prediction scores of all methods on the test set. To train your own data, please generate sample features and then use files such as fivefold_crossvalid_ZnCaMg.py
