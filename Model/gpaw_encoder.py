@@ -118,7 +118,7 @@ class Interaction_Attention(nn.Module):
         return out
 
 
-class HopGNN(torch.nn.Module):
+class N2N(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, num_hop, dropout, activation,
                  feature_inter, inter_layer, feature_fusion, norm_type):
         super().__init__()
@@ -144,7 +144,7 @@ class HopGNN(torch.nn.Module):
             self.atten_neighbor = nn.Linear(hidden_channels, 1)
         # norm
         self.build_norm_layer(hidden_channels, inter_layer * 2 + 2)
-        print('HopGNN hidden:', hidden_channels, 'interaction:', feature_inter, 'hop:', num_hop, 'layers:', inter_layer)
+        print('N2N hidden:', hidden_channels, 'interaction:', feature_inter, 'hop:', num_hop, 'layers:', inter_layer)
 
     def build_activation(self, activation):
         if activation == 'tanh':
@@ -753,12 +753,12 @@ class DMPNN(nn.Module):
 
         for i in range(gpaw_layer_num):
             if i==0:
-                self.gpaw_layers_a2a.append(HopGNN(in_channels=atom_dim+hidden_dim, hidden_channels=node_dim,num_hop=3, dropout=0.5, activation='relu',
+                self.gpaw_layers_a2a.append(N2N(in_channels=atom_dim+hidden_dim, hidden_channels=node_dim,num_hop=3, dropout=0.5, activation='relu',
                      feature_inter='attention', inter_layer=2, feature_fusion='attention', norm_type='ln'))
                 self.gpaw_layers_other.append(
                     Bind(num_head=4, feat_drop=0.5, attn_drop=0, num_convs=2, node_dim=512, edge_dim=16))
             else:
-                self.gpaw_layers_a2a.append(HopGNN(in_channels=node_dim, hidden_channels=node_dim, num_hop=3, dropout=0.5,activation='relu',
+                self.gpaw_layers_a2a.append(N2N(in_channels=node_dim, hidden_channels=node_dim, num_hop=3, dropout=0.5,activation='relu',
                            feature_inter='attention', inter_layer=2, feature_fusion='attention', norm_type='ln'))
                 self.gpaw_layers_other.append(
                     Bind(num_head=4, feat_drop=0.5, attn_drop=0, num_convs=2, node_dim=512, edge_dim=512))
