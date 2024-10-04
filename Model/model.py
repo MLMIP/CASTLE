@@ -3,7 +3,7 @@ import torch
 from torch.nn import GroupNorm
 from torch import nn
 import torch.nn.functional as F
-from SMILE.Model.gpaw_encoder import DMPNN
+from SMILE.Model.gpaw_encoder import GPAW
 from torch_geometric.nn import TransformerConv
 
 class Atom_GTN(torch.nn.Module):
@@ -107,11 +107,9 @@ class Model_Net(nn.Module):
         seq = self.seq_difference(seq_bm, seq_am)
         v1_proj = self.project_v1(struct_metal_fea)
         v2_proj = self.project_v2(torch.cat((seq, metal), dim=0))
-        # 拼接投影后的特征向量
+
         combined = torch.cat((v1_proj, v2_proj), dim=0)
-        # 生成门控信号
         gate_output = torch.sigmoid(self.gate(combined))
-        # 融合特征向量
         x = gate_output * v1_proj + (1 - gate_output) * v2_proj
 
         for i in range(len(self.layers) - 1):
