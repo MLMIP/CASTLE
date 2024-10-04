@@ -324,9 +324,6 @@ class ResidualLayer(torch.nn.Module):
 
 
 class Distance2embedding(nn.Module):
-    """
-    Implementation of Spatial distance Embedding Module.
-    """
 
     def __init__(self, hidden_dim, cut_dist, activation="ReLU"):
         super(Distance2embedding, self).__init__()
@@ -349,9 +346,6 @@ class Distance2embedding(nn.Module):
 
 
 class Angle2embedding(nn.Module):
-    """
-    Implementation of Spatial angle Embedding Module.
-    """
 
     def __init__(self, hidden_dim, class_num, activation="ReLU"):
         super(Angle2embedding, self).__init__()
@@ -369,9 +363,6 @@ class Angle2embedding(nn.Module):
 
 
 class pos2embedding(nn.Module):
-    """
-    Implementation of Spatial angle Embedding Module.
-    """
 
     def __init__(self, hidden_dim, pos_coordinate, activation="ReLU"):
         super(pos2embedding, self).__init__()
@@ -388,9 +379,6 @@ class pos2embedding(nn.Module):
 
 
 class dis2embedding(nn.Module):
-    """
-    Implementation of Spatial angle Embedding Module.
-    """
 
     def __init__(self, hidden_dim, dis_dim, activation="ReLU"):
         super(dis2embedding, self).__init__()
@@ -442,10 +430,6 @@ class Atom2BondLayer_1(nn.Module):
 
 
 class Atom2BondLayer(nn.Module):
-    """
-    Initial hidden representations for edges.
-    """
-
     def __init__(self, node_dim, edge_dim, feat_drop, activation="ReLU"):  # 隐藏层的维度为200
         super(Atom2BondLayer, self).__init__()
         self.feat_drop = nn.Dropout(feat_drop)
@@ -502,9 +486,6 @@ class PoswiseFeedForwardNet(nn.Module):
 
 
 class Bond2BondLayer(nn.Module):
-    """
-    Implementation of Distance and angle-aware edge to edge blocks (DAEE blocks).
-    """
 
     def __init__(self, edge_dim, num_head, feat_drop, attn_drop, activation="ReLU", activation_att="LeakyReLU",
                  class_num=6, beta=False):
@@ -601,9 +582,6 @@ def u_cat_v(edges):
 
 
 class Bond2AtomLayer(nn.Module):
-    """
-    Implementation of Distance-aware edge to node blocks (DEN blocks).
-    """
 
     def __init__(self, node_dim, num_head, feat_drop, attn_drop, activation="ReLU",
                  activation_att="LeakyReLU", dist_cutoff=5, beta=True):
@@ -732,14 +710,11 @@ class Bind(nn.Module):
         return atom_embedding
 
 
-class DMPNN(nn.Module):
-    """
-    the whole model (PBCNet)
-    """
+class GPAW(nn.Module):
 
     def __init__(self, p_dropout=0.5, atom_dim=256, hidden_dim=128, edge_dim=16, node_dim=512,
                  in_dim_res=60, in_dim_edge=4, encoder_type="Bind", degree_information=0, GCN_=0,gpaw_layer_num = 1):
-        super(DMPNN, self).__init__()
+        super(GPAW, self).__init__()
 
         self.encoder_type = encoder_type
         self.degree_information = degree_information
