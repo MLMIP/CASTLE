@@ -3,7 +3,7 @@ import torch
 from torch.nn import GroupNorm
 from torch import nn
 import torch.nn.functional as F
-from SMILE.Model.gpaw_encoder import GPAW
+from CASTLE.Model.gpaw_encoder import GPAW
 from torch_geometric.nn import TransformerConv
 
 class Atom_GTN(torch.nn.Module):
