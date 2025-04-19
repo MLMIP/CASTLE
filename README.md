@@ -3,19 +3,19 @@
 ## Improving mutation pathogenicity prediction of metal-binding sites in proteins with a panoramic attention mechanism
 ***
 
-SMILE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of SMILE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
+CASTLE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of CASTLE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
 
 ## Step 1: Clone the GitHub repository
 
 ```commandline
-git clone https://github.com/MLMIP/SMILE.git
-cd SMILE
+git clone https://github.com/MLMIP/CASTLE.git
+cd CASTLE
 ```
 
 ## Step 2: Build required dependencies
 It is recommended to use [Anaconda](https://www.anaconda.com/download#downloads) to install PyTorch, PyTorch Geometrics 
 and other required Python libraries. Executing the below command will automatically install the Anaconda virtual 
-environment. Upon completion, a virtual environment named "smile" will be created. (dgl:1.1.2+cu118)
+environment. Upon completion, a virtual environment named "CASTLE" will be created. (dgl:1.1.2+cu118)
 ```commandline
 source install.sh
 ```
@@ -31,10 +31,10 @@ Download from http://www.bioinf.manchester.ac.uk/naccess/
 Download from https://www.ebi.ac.uk/thornton-srv/software/HBPLUS/
 
 
-## Step 4: Running SMILE
-Activate the installed smile virtual environment and ensure that the current working directory is SMILE.
+## Step 4: Running CASTLE
+Activate the installed CASTLE virtual environment and ensure that the current working directory is CASTLE.
 ```commandline
-conda activate smile
+conda activate CASTLE
 ```
 Then, you can use the following command to batch predict the effect of mutations on protein stability.
 ```commandline
@@ -42,7 +42,7 @@ python predict.py -i /path/to/where/input/file -o /path/to/where/output/file -d 
 ```
 For example:
 ```commandline
-python predict.py -i ./predict_save_data/predict.xlsx -o ./predict_save_data/SMILE_predict_result.xlsx -d ./predict_save_data
+python predict.py -i ./predict_save_data/predict.xlsx -o ./predict_save_data/CASTLE_predict_result.xlsx -d ./predict_save_data
 ```
 Where the input file is a given file, with each line representing a specific mutation in the format 
 `PDB Metal FromAA ToAA pdbpos`, such as `1s1c MG F L 39`.
