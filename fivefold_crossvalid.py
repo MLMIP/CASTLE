@@ -18,7 +18,7 @@ from sklearn.model_selection import StratifiedKFold, StratifiedShuffleSplit
 from torch import nn
 from torch.nn import BCELoss
 from torch.utils.data import DataLoader
-from SMILE.Model.model import Model_Net
+from CASTLE.Model.model import Model_Net
 import Dataset as dataset
 import openpyxl as op
 
@@ -141,7 +141,7 @@ def fcvtest(test_pred, test_label,output_result):
     op_toexcel(result, output_result)
 
 def main():
-    parser = argparse.ArgumentParser(description="Use SMILE to fivefold_crossvalid_ZnCaMg")
+    parser = argparse.ArgumentParser(description="Use CASTLE to fivefold_crossvalid_ZnCaMg")
     parser.add_argument('-id', '--data-index', dest='data_index', type=str,default='Data/alltrain_data/data_index/Zn.pkl',
                         required=False, help='The file stores information about the samples used for five-fold cross-validation.')
     parser.add_argument('-il', '--data-label-index', dest='data_label_index', type=str,default='Data/alltrain_data/data_label_index/Zn_label.pkl',
