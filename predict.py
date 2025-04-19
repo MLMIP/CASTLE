@@ -6,7 +6,7 @@ from numpy import mean
 
 from generate_predict_fea import generate_predict_input
 from get_predict_pdb import get_predict_pdb_info
-from SMILE.Model.model import Model_Net
+from CASTLE.Model.model import Model_Net
 import Dataset_predict as dataset
 from torch.utils.data import DataLoader
 
@@ -15,7 +15,7 @@ def predict(data_loader_predict,outfile):
     model = Model_Net()
     print(model.state_dict().keys())
     # 2. 定义权重文件路径
-    weights_path = 'Result/Zn_smile_test.pth'
+    weights_path = 'Result/Zn_CASTLE_test.pth'
     # 3. 加载预训练的权重文件
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     checkpoint = torch.load(weights_path, map_location=device)
@@ -48,10 +48,10 @@ def predict(data_loader_predict,outfile):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Using SMILE to predict the pathogenicity of mutations.")
+    parser = argparse.ArgumentParser(description="Using CASTLE to predict the pathogenicity of mutations.")
     parser.add_argument('-i', '--mutant-file', dest='mutant_file', type=str,default='predict_save_data/predict.xlsx',
                         required=False, help='The file storing the information of the mutations.')
-    parser.add_argument('-o', '--output-file', dest='outfile', type=str,default='predict_save_data/SMILE_predict_result.xlsx',
+    parser.add_argument('-o', '--output-file', dest='outfile', type=str,default='predict_save_data/CASTLE_predict_result.xlsx',
                         required=False, help='The path of the result.')
     parser.add_argument('-d', '--feature-dir', dest='dir', type=str,default='predict_save_data',
                         required=False, help='The path to store intermediate features and model inputs.')
