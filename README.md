@@ -1,6 +1,6 @@
 # SMILE
 ***
-## Interpretable deep graph panoramic attention-weaving learning enables accurate pathogenicity prediction of mutations at metal-binding sites
+## Improving mutation pathogenicity prediction of metal-binding sites in proteins with a panoramic attention mechanism
 ***
 
 SMILE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of SMILE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
@@ -48,4 +48,4 @@ Where the input file is a given file, with each line representing a specific mut
 `PDB Metal FromAA ToAA pdbpos`, such as `1s1c MG F L 39`.
 
 ## other
-We provide all curated samples of metal binding site mutations, the code for generating sample features, and the prediction scores of all methods on the test set. To train your own data, please generate sample features and then use files such as fivefold_crossvalid_ZnCaMg.py
+We provide all curated samples of metal binding site mutations, the code for generating sample features, and the prediction scores of all methods on the test set. To train your own data, please generate sample features and then use files such as fivefold_crossvalid.py. The hyperparameter settings for all datasets are stored in the config.yaml file.
