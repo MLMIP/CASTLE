@@ -1,0 +1,44 @@
+# config.yaml
+
+# --- 参数说明 ---
+# learning_rate: 学习率 (Learning Rate for optimizer)
+# weight_decay:  权重衰减 (Weight Decay for regularization)
+# step_size:     学习率调度器的步长 (Step size for learning rate scheduler, e.g., StepLR)
+# gamma:         学习率调度器的衰减因子 (Gamma factor for learning rate scheduler)
+# dropout:       Dropout 比率 (Dropout rate)
+# ----------------
+
+# --- Zn Dataset Parameters ---
+Zn:
+  learning_rate: 3e-6
+  weight_decay: 1e-2  # 0.01
+  step_size: 10
+  gamma: 0.8
+  dropout: 0.5
+
+# --- Ca Dataset Parameters ---
+Ca:
+  learning_rate: 1e-5  # 0.00001
+  weight_decay: 1e-3  # 0.001
+  step_size: 10
+  gamma: 0.5
+  dropout: 0.5
+
+# --- Mg Dataset Parameters ---
+Mg:
+  learning_rate: 3e-5  # 0.00003
+  weight_decay: 1e-2  # 0.01
+  step_size: 10
+  gamma: 0.3
+  dropout: 0.5
+
+# --- Mix Dataset Parameters ---
+Mix:
+  learning_rate: 3e-6
+  weight_decay: 1e-3  # 0.001
+  step_size: 10
+  gamma: 0.8
+  dropout: 0.5
+
+       
+
