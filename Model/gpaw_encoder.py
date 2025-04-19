@@ -7,7 +7,7 @@ import numpy as np
 import torch
 from dgl.nn.functional import edge_softmax
 
-from SMILE.Model.function import get_activation_func
+from CASTLE.Model.function import get_activation_func
 import torch.nn.functional as F
 
 #########################################替换图卷积########################################
