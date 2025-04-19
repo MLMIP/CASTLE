@@ -1,4 +1,4 @@
-# SMILE
+# CASTLE
 ***
 ## Improving mutation pathogenicity prediction of metal-binding sites in proteins with a panoramic attention mechanism
 ***
