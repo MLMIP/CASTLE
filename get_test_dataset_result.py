@@ -40,7 +40,7 @@ def setup_seed(seed):
 #Ca: 0.44
 #Mg: 0.40
 #Mix: 0.41
-def binary_focal_loss(gamma,alpha):
+def binary_focal_loss(alpha,gamma=2):
     # 将 alpha 和 gamma 转换为张量
     alpha = torch.tensor(alpha, dtype=torch.float32)
     gamma = torch.tensor(gamma, dtype=torch.float32)
@@ -183,7 +183,7 @@ def main():
         os.makedirs(dir_weight)
     setup_seed(42) # 使用你想要的种子数值
     epochs = 500
-    lr = 0.00002
+    lr = 3e-6
     batchsize = 1
     GPU_ID = 'cuda:3'
     devices = torch.device(GPU_ID if torch.cuda.is_available() else 'cpu')
@@ -208,6 +208,7 @@ def main():
             pdb_label_train.append(1)
     alpha = x/(len(pdb_tag_train))
     xishu = (len(pdb_tag_train)-x)/x
+    criterion = binary_focal_loss(alpha=alpha)
     fold_num = 0
     data_test = dataset.mydataset(pdb_tag_test,'Data/test_data')
     data_loader_test = DataLoader(data_test, batch_size=batchsize, shuffle=True,drop_last=True,num_workers=0)
@@ -219,8 +220,8 @@ def main():
         model.to(devices)
         best_model_wts = None
         # criterion = binary_focal_loss(gamma=2, alpha=alpha)
-        optimizer = torch.optim.Adam(model.parameters(), lr, weight_decay=1e-2)
-        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.85)
+        optimizer = torch.optim.Adam(model.parameters(), lr, weight_decay=1e-3)
+        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.8)
 
         pdb_tag_train = all_pdb_tag[train_inx]
         pdb_tag_valid = all_pdb_tag[valid_inx]
@@ -261,8 +262,8 @@ def main():
                                seq_from, seq_to, metal_fea, devices)
 
                 truth_y = label.to(devices).type(torch.float)
-                weights = torch.tensor([1.0 if y == 1.0 else xishu for y in label])  # 正类别权重为1.0，负类别权重为xxxx
-                criterion = torch.nn.BCELoss(weight=weights).to(devices)
+                # weights = torch.tensor([1.0 if y == 1.0 else xishu for y in label])  # 正类别权重为1.0，负类别权重为xxxx
+                # criterion = torch.nn.BCELoss(weight=weights).to(devices)
                 loss = criterion(pred_y,truth_y)
                 loss.to(devices)
                 out = pred_y.detach().cpu().numpy()
@@ -303,8 +304,8 @@ def main():
                                    atom_node_from, atom_index_from, atom_edge_from, node_pos_from, basic_attn_from,
                                    seq_from, seq_to, metal_fea, devices)
                     label = label.to(devices).type(torch.float)
-                    weights = torch.tensor([1.0 if y == 1.0 else xishu for y in label])  # 正类别权重为1.0，负类别权重为xxxx
-                    criterion = torch.nn.BCELoss(weight=weights).to(devices)
+                    # weights = torch.tensor([1.0 if y == 1.0 else xishu for y in label])  # 正类别权重为1.0，负类别权重为xxxx
+                    # criterion = torch.nn.BCELoss(weight=weights).to(devices)
                     loss = criterion(pred_y,label)
                     val_loss += loss.item()
             val_loss /= len(data_loader_valid)
