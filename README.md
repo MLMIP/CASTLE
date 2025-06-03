@@ -3,7 +3,7 @@
 ## Improving mutation pathogenicity prediction of metal-binding sites in proteins with a panoramic attention mechanism
 ***
 
-CASTLE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the prediction of metal binding site mutations. The core of CASTLE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
+CASTLE is a novel framework based on depth map panoramic attention weaving learning, which significantly improves the mutation pathogenicity prediction of metal-binding sites. The core of CASTLE effectiveness lies in the efficient induction of metalloprotein structures and the integration of multidimensional features.
 
 ## Step 1: Clone the GitHub repository
 
